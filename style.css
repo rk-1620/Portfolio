@@ -630,10 +630,34 @@ body{
     padding: 10px 20px;
 }
 
+
+.copy-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.copy-msg {
+  position: absolute;
+  top: 50%;
+  left: 105%;
+  transform: translateY(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
 #contact-section{
     margin: 100px 0;
     padding: 0 10vw;
 }
+
 
 .form{
     width: 100%;
