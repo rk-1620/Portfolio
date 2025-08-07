@@ -1,5 +1,31 @@
 // const { compareSync } = require("bcrypt");
 
+
+    const pingBackend = async () => {
+    try {
+      const databg = await fetch('https://new-expense-tracker-server.onrender.com/api/ping');
+      const dataex = await fetch('https://new-expense-tracker-server.onrender.com/api/ping');
+      // const data = await res.json(); // Parse JSON
+
+      // Check for success condition
+      if (databg.status && dataex.status) {
+        console.log("✅ Success received:", dataex);
+        console.log('Backend pinged!');
+        return; // stop retrying
+      } else {
+        console.log("⚠️ Response received but not success. Retrying...");
+      }
+
+    } catch (err) {
+      console.warn('❌ Backend ping failed:', err.message);
+    }
+
+    // Retry after 3 seconds
+    setTimeout(pingBackend, 3000);
+  };
+
+  document.addEventListener("DOMContentLoaded", pingBackend);
+
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".links");
 
